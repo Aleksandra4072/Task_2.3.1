@@ -3,9 +3,7 @@ package web.config;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -21,12 +19,6 @@ import java.util.Properties;
 @EnableTransactionManagement(proxyTargetClass = true)
 public class JpaConfig {
 
-    private final Environment environment;
-
-    @Autowired
-    public JpaConfig(Environment environment) {
-        this.environment = environment;
-    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -43,9 +35,9 @@ public class JpaConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("db.driver");
-        dataSource.setUrl(environment.getProperty("db.url"));
-        dataSource.setUsername(environment.getProperty("db.username"));
-        dataSource.setPassword(environment.getProperty("db.password"));
+        dataSource.setUrl("db.url");
+        dataSource.setUsername("db.username");
+        dataSource.setPassword("db.password");
         return dataSource;
     }
 
