@@ -7,7 +7,7 @@
     <title>Edit User</title>
 </head>
 <body>
-<form action="#" th:action="@{/editUser}" th:object="${user}" method="post">
+<form action="#" th:action="@{/editUserInDB}" th:object="${user}" method="post">
     <label for="id">ID</label>
     <input readonly type="number" th:field="*{id}" id="id">
 

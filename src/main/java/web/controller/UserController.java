@@ -20,7 +20,6 @@ public class UserController {
 
     @RequestMapping("/")
     public String allUsers(Model model) {
-        model.addAttribute("user", new User());
         model.addAttribute("users", userService.allUsers());
         return "users";
     }
@@ -30,7 +29,7 @@ public class UserController {
         return "addUser";
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/addUserToDB")
     public String addUser(User user) {
         userService.addUser(user);
         return "redirect:/";
@@ -50,7 +49,7 @@ public class UserController {
         return "editUser";
     }
 
-    @PostMapping("/editUser")
+    @PostMapping("/editUserInDB")
     public String editUser(User user) {
         userService.editUser(user);
 
